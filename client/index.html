@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Physics</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-left">
+        <svg class="logo" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="url(#logoGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <defs>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ff00c8"/>
+              <stop offset="100%" stop-color="#7b2ff7"/>
+            </linearGradient>
+          </defs>
+          <circle cx="8" cy="8" r="4.5"/>
+          <rect x="12.5" y="12.5" width="8" height="8" rx="1.5"/>
+          <line x1="2" y1="21" x2="22" y2="21"/>
+        </svg>
+        <div class="title-block">
+          <div class="title">PHYSICS</div>
+          <div class="tagline" id="compLabel">Open a composition</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <button class="icon-btn" id="refreshBtn" title="Re-read layers from After Effects (selection, or all layers if nothing is selected)">&#8635;</button>
+      </div>
+    </div>
+
+    <div class="content">
+      <!-- Preview -->
+      <div class="preview-container" id="previewContainer">
+        <canvas id="cv"></canvas>
+        <div class="preview-no-comp" id="previewNoComp">Open a composition</div>
+      </div>
+      <div class="transport">
+        <button class="pill-btn" id="playBtn" title="Play / Pause (Space)">&#9654;</button>
+        <button class="pill-btn" id="stopBtn" title="Back to start">&#9632;</button>
+        <input type="range" id="frameSlider" min="0" max="0" value="0">
+        <div class="frame-label" id="frameLabel">0 / 0</div>
+        <label class="toggle-switch mini" title="Move the AE time indicator while scrubbing">
+          <input type="checkbox" id="syncTime"><span class="toggle-slider"></span>
+        </label>
+        <span class="toggle-label small">sync AE</span>
+      </div>
+
+      <!-- World -->
+      <div class="card" id="worldCard">
+        <div class="card-head" data-collapse="worldCard">
+          <span class="card-title"><span class="step">01</span>World</span>
+          <span class="chev">&#9660;</span>
+        </div>
+        <div class="card-body">
+          <div id="worldParams"></div>
+
+          <div class="control-row">
+            <span class="control-label">Walls</span>
+            <div class="pill-group" id="walls">
+              <button class="chip" data-w="floor" title="Floor (bottom edge of the comp)">floor</button>
+              <button class="chip" data-w="ceiling" title="Ceiling (top edge)">ceiling</button>
+              <button class="chip" data-w="left" title="Left edge">left</button>
+              <button class="chip" data-w="right" title="Right edge">right</button>
+            </div>
+          </div>
+
+          <div class="control-row wrap">
+            <span class="control-label">Range</span>
+            <input type="number" class="num-input" id="startFrame" step="1" min="0" title="Start frame">
+            <span class="dash">&ndash;</span>
+            <input type="number" class="num-input" id="endFrame" step="1" min="0" title="End frame">
+            <span class="spacer"></span>
+            <div class="pill-group">
+              <button class="chip" id="rangeWork" title="Use the comp's work area">work area</button>
+              <button class="chip" id="rangeComp" title="Whole composition">comp</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bodies -->
+      <div class="card" id="bodiesCard">
+        <div class="card-head" data-collapse="bodiesCard">
+          <span class="card-title"><span class="step">02</span>Bodies <span class="count" id="bodyCount"></span></span>
+          <span class="head-actions">
+            <button class="chip tiny" data-setall="dynamic" title="Make every included body dynamic">all dynamic</button>
+            <button class="chip tiny" data-setall="static" title="Make every included body static">all static</button>
+            <span class="chev">&#9660;</span>
+          </span>
+        </div>
+        <div class="card-body no-pad">
+          <div id="bodyList" class="body-list"></div>
+          <div id="bodyDetail" class="body-detail hidden"></div>
+        </div>
+      </div>
+
+      <!-- Bake -->
+      <div class="card" id="bakeCard">
+        <div class="card-head" data-collapse="bakeCard">
+          <span class="card-title"><span class="step">03</span>Bake</span>
+          <span class="chev">&#9660;</span>
+        </div>
+        <div class="card-body">
+          <div class="toggle-grid">
+            <label class="toggle-item" title="Remove parenting so baked positions are in comp space">
+              <span class="toggle-label">Unparent</span>
+              <span class="toggle-switch"><input type="checkbox" data-b="unparent"><span class="toggle-slider"></span></span>
+            </label>
+            <label class="toggle-item" title="Delete existing Position / Rotation keys inside the range first">
+              <span class="toggle-label">Clear keys in range</span>
+              <span class="toggle-switch"><input type="checkbox" data-b="clearRange"><span class="toggle-slider"></span></span>
+            </label>
+            <label class="toggle-item" title="Linear interpolation between keys (recommended)">
+              <span class="toggle-label">Linear keys</span>
+              <span class="toggle-switch"><input type="checkbox" data-b="linear"><span class="toggle-slider"></span></span>
+            </label>
+            <label class="toggle-item" title="Also bake Rotation">
+              <span class="toggle-label">Rotation</span>
+              <span class="toggle-switch"><input type="checkbox" data-b="rotation"><span class="toggle-slider"></span></span>
+            </label>
+          </div>
+          <div id="bakeParams"></div>
+          <button class="run-btn" id="bakeBtn">BAKE TO KEYFRAMES</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="status-bar" id="status">Loading&hellip;</div>
+    <div class="footer"><div class="footer-text">Made by <span>MICKEY PERRY</span></div></div>
+  </div>
+
+  <script src="planck.min.js"></script>
+  <script src="geometry.js"></script>
+  <script src="sim.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
