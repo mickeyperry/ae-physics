@@ -1,0 +1,17 @@
+{"version":"0.1.0","comp":{"id":3914,"name":"PHY_TEST","width":1920,"height":1080,"fps":24,"duration":3,"workAreaStart":0,"workAreaDuration":3,"time":0},"sampleTime":0,"fromSelection":false,"layers":[{"index":1,"id":3932,"name":"PHYSICS","enabled":true,"supported":true,"reason":"","inPoint":0,"outPoint":3,"kind":"text","anchor":[0,0],"position":[1400,400],"rotation":0,"scale":[100,100],"hasParent":false,"hasKeys":false,"hasExpression":false,"rect":{"left":2.3242,"top":-94.8145,"width":565.9473,"height":96.9336},"shapes":[
+
+],"masks":[
+
+]},{"index":2,"id":3931,"name":"Solid","enabled":true,"supported":true,"reason":"","inPoint":0,"outPoint":3,"kind":"solid","anchor":[150,40],"position":[400,500],"rotation":45,"scale":[50,50],"hasParent":false,"hasKeys":false,"hasExpression":false,"rect":{"left":0,"top":0,"width":300,"height":80},"shapes":[
+
+],"masks":[
+
+]},{"index":3,"id":3929,"name":"Ball","enabled":true,"supported":true,"reason":"","inPoint":0,"outPoint":3,"kind":"shape","anchor":[0,0],"position":[960,100],"rotation":0,"scale":[100,100],"hasParent":false,"hasKeys":false,"hasExpression":false,"rect":{"left":-75,"top":-75,"width":150,"height":150},"shapes":[{"type":"ellipse","xf":[{"anchor":[0,0],"position":[0,0],"scale":[100,100],"rotation":0}],"size":[150,150],"position":[0,0]}],"masks":[
+
+]},{"index":4,"id":3928,"name":"Rounded","enabled":true,"supported":true,"reason":"","inPoint":0,"outPoint":3,"kind":"shape","anchor":[0,0],"position":[1100,150],"rotation":-10,"scale":[100,100],"hasParent":false,"hasKeys":false,"hasExpression":false,"rect":{"left":-130,"top":-60,"width":260,"height":120},"shapes":[{"type":"rect","xf":[{"anchor":[0,0],"position":[0,0],"scale":[100,100],"rotation":0}],"size":[260,120],"position":[0,0],"roundness":40}],"masks":[
+
+]},{"index":5,"id":3927,"name":"Crate","enabled":true,"supported":true,"reason":"","inPoint":0,"outPoint":3,"kind":"shape","anchor":[0,0],"position":[700,300],"rotation":20,"scale":[100,100],"hasParent":false,"hasKeys":false,"hasExpression":false,"rect":{"left":-100,"top":-100,"width":200,"height":200},"shapes":[{"type":"rect","xf":[{"anchor":[0,0],"position":[0,0],"scale":[100,100],"rotation":0}],"size":[200,200],"position":[0,0],"roundness":0}],"masks":[
+
+]},{"index":6,"id":3926,"name":"Floor","enabled":true,"supported":true,"reason":"","inPoint":0,"outPoint":3,"kind":"shape","anchor":[0,0],"position":[960,1000],"rotation":0,"scale":[100,100],"hasParent":false,"hasKeys":false,"hasExpression":false,"rect":{"left":-800,"top":-30,"width":1600,"height":60},"shapes":[{"type":"rect","xf":[{"anchor":[0,0],"position":[0,0],"scale":[100,100],"rotation":0}],"size":[1600,60],"position":[0,0],"roundness":0}],"masks":[
+
+]}]}
